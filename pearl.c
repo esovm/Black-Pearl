@@ -598,7 +598,7 @@ void init() {
 void bpanic(const char * fmt, ...) {
     va_list args;
     va_start(args, fmt);
-    fprintf(stdout, "***");
+    fprintf(stdout, "Error: ");
     vfprintf(stdout, fmt, args);
     fflush(stdout);
     fflush(stderr);

@@ -12,7 +12,7 @@ void repl(FILE * input_file, bool verbose) {
             printf(prompt);
         if (fgets(line, MAX_LINE, input_file) == NULL)
             break;
-        if (!strcmp(line, ",exit"))
+        if (!strcmp(line, "exit"))
             break;
         tokens = appendl(tokens, tokenize(line));
         while (tokens != NULL) {
@@ -22,10 +22,6 @@ void repl(FILE * input_file, bool verbose) {
                 break;
             } else
                 prompt = " > ";
-            if (verbose) {
-                writeitm(parsed);
-                printf("==>\n");
-            }
             writeobj(eval(parsed, genv));
         }
     }

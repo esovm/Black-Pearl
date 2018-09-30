@@ -1,6 +1,5 @@
 
 CC=gcc
-
 CFLAGS=-O3
 
 all: pearl libpearl.a
