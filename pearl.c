@@ -1,5 +1,5 @@
 
-#include "pearl.h"
+#include "pearlprivate.h"
 
 env_t * syntaxes;
 env_t * genv;
@@ -804,8 +804,7 @@ object_t * parse(list_t ** tokens_pointer) {
         ret->type = TT_INT;
     else if (nextfloat(first_token, &(ret->bpflt.value)))
         ret->type = TT_FLT;
-    else if (nextfrac(first_token, &(ret->bpfrac.numerator),
-                        &(ret->bpfrac.denominator)))
+    else if (nextfrac(first_token, &(ret->bpfrac.numerator), &(ret->bpfrac.denominator)))
         ret->type = TT_FRAC;
     else if (!strcmp(first_token, "(")) {
         free(ret);
