@@ -13,8 +13,7 @@ object_t * prplus(object_t * params, env_t * env) {
     if (params->type == TT_NIL)
         ret->bpint.value = 0;
     else if (params->type == TT_PAIR && params->bptuple.car->type == TT_INT)
-        ret->bpint.value = params->bptuple.car->bpint.value +
-                             prplus(params->bptuple.cdr, env)->bpint.value;
+        ret->bpint.value = params->bptuple.car->bpint.value + prplus(params->bptuple.cdr, env)->bpint.value;
     else
         bpanic("Quite the illegal addition there");
     return ret;
@@ -27,8 +26,7 @@ object_t * prminus(object_t * params, env_t * env) {
         params->bptuple.cdr->type == TT_PAIR &&
         params->bptuple.cdr->bptuple.car->type == TT_INT &&
         params->bptuple.cdr->bptuple.cdr->type == TT_NIL)
-        ret->bpint.value = params->bptuple.car->bpint.value -
-                             params->bptuple.cdr->bptuple.car->bpint.value;
+        ret->bpint.value = params->bptuple.car->bpint.value - params->bptuple.cdr->bptuple.car->bpint.value;
     else
         bpanic("Quite the illegal subtraction there");
     return ret;
@@ -41,8 +39,7 @@ object_t * prgt(object_t * params, env_t * env) {
         params->bptuple.cdr->type == TT_PAIR &&
         params->bptuple.cdr->bptuple.car->type == TT_INT &&
         params->bptuple.cdr->bptuple.cdr->type == TT_NIL)
-        ret->bpbool.value = params->bptuple.car->bpint.value >
-                             params->bptuple.cdr->bptuple.car->bpint.value;
+        ret->bpbool.value = params->bptuple.car->bpint.value > params->bptuple.cdr->bptuple.car->bpint.value;
     else
         bpanic("Illegal comparison");
     return ret;
@@ -55,8 +52,7 @@ object_t * prequal(object_t * params, env_t * env) {
         params->bptuple.cdr->type == TT_PAIR &&
         params->bptuple.cdr->bptuple.car->type == TT_INT &&
         params->bptuple.cdr->bptuple.cdr->type == TT_NIL)
-        ret->bpbool.value = params->bptuple.car->bpint.value ==
-                             params->bptuple.cdr->bptuple.car->bpint.value;
+        ret->bpbool.value = params->bptuple.car->bpint.value == params->bptuple.cdr->bptuple.car->bpint.value;
     else
         bpanic("Illegal comparison");
     return ret;
@@ -69,8 +65,7 @@ object_t * prmul(object_t * params, env_t * env) {
     if (params->type == TT_NIL)
         ret->bpint.value = 1;
     else if (params->type == TT_PAIR && params->bptuple.car->type == TT_INT)
-        ret->bpint.value = params->bptuple.car->bpint.value *
-                             prplus(params->bptuple.cdr, env)->bpint.value;
+        ret->bpint.value = params->bptuple.car->bpint.value * prplus(params->bptuple.cdr, env)->bpint.value;
     else
         bpanic("Quite the illegal addition there");
     return ret;
