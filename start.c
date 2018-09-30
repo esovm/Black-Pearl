@@ -6,7 +6,7 @@ void repl(FILE * input_file, bool verbose) {
     char line[MAX_LINE];
     list_t * tokens = NULL;
     object_t * parsed;
-    char * prompt = ">>> ";
+    char * prompt = " > ";
     while (1) {
         if (verbose)
             printf(prompt);
@@ -18,10 +18,10 @@ void repl(FILE * input_file, bool verbose) {
         while (tokens != NULL) {
             parsed = parsef(&tokens);
             if (parsed == NULL) {
-                prompt = "... ";
+                prompt = " . ";
                 break;
             } else
-                prompt = ">>> ";
+                prompt = " > ";
             if (verbose) {
                 writeitm(parsed);
                 printf("==>\n");
